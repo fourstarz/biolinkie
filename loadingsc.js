@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         particle.style.top = `${Math.random() * window.innerHeight}px`;
         particles.appendChild(particle);
     }
+    }
 
     // dark mode sections
     if (localStorage.getItem('darkMode') === 'true') {
