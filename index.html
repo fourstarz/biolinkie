@@ -19,6 +19,7 @@
             animation: changeBackground 10s infinite alternate;
             transition: background-color 0.3s ease;
             font-family: 'Jersey 10', sans-serif;
+            position: relative; /* Added for absolute positioning of love text */
         }
 
         @keyframes changeBackground {
@@ -31,6 +32,23 @@
             }
         }
 
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .loading-text {
+            font-size: 24px;
+        }
+
         .content {
             background-color: rgba(255, 255, 255, 0.5);
             padding: 30px;
@@ -38,6 +56,7 @@
             text-align: center;
             transition: background-color 0.5s ease;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative; /* Added for absolute positioning of love text */
         }
 
         img {
@@ -122,13 +141,33 @@
                 transform: translate(calc(100vw - 50%), calc(100vh - 50%));
             }
         }
+
+        .love-text {
+            position: absolute;
+            bottom: -20px; /* Adjust this value as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: white;
+            opacity: 0; /* Hidden by default */
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .content:hover .love-text {
+            opacity: 1; /* Show on hover */
+        }
     </style>
 </head>
 <body>
-    <div class="content">
+    <div class="loading-screen">
+        <div class="loading-text">Loading...</div>
+    </div>
+
+    <div class="content" style="display: none;">
         <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image">
         <div>
-            <div class="name">a.exe</div>
+            <div class="name" id="username">Loading...</div>
             <p>Programmer</p>
         </div>
         <div class="social-icons">
@@ -136,6 +175,9 @@
             <a href="https://soundcloud.com/coldestinc"><img src="https://image.flaticon.com/icons/png/512/1384/1384015.png" alt="SoundCloud" style="width: 30px;"></a>
             <!-- Add more social icons as needed -->
         </div>
+
+        <!-- Love text -->
+        <div class="love-text">Made with love by @rights4a</div>
     </div>
 
     <div class="particles">
@@ -148,14 +190,8 @@
                 for (let i = 0; i < NUM_PARTICLES; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
-                    particle.style.width = `${Math.random() * 10}px`;
-                    particle.style.height = `${Math.random() * 10}px`;
-                    particle.style.left = `${Math.random() * window.innerWidth}px`;
-                    particle.style.top = `${Math.random() * window.innerHeight}px`;
-                    particles.appendChild(particle);
-                }
-            });
-        </script>
+                   
+
     </div>
 </body>
 </html>
