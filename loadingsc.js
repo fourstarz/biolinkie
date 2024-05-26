@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loadingScreen = document.getElementById('loading-screen');
     const mainContent = document.getElementById('main-content');
-    const signUpButton = document.getElementById('sign-up-button');
-    const signUpForm = document.getElementById('sign-up-form');
-    const form = document.getElementById('form');
-    const generatedLink = document.getElementById('generated-link');
 
     // Simulate loading time
     setTimeout(function() {
@@ -12,15 +8,27 @@ document.addEventListener("DOMContentLoaded", function() {
         mainContent.style.display = 'block';
     }, 2000); // Adjust the time as needed
 
-    // Event listeners
-    signUpButton.addEventListener('click', function() {
-        signUpForm.style.display = 'block';
-    });
+    // Retrieve user's GitHub profile data
+    fetch('https://api.github.com/users/yourgithubname')
+        .then(response => response.json())
+        .then(data => {
+            const username = data.login;
+            const profilePic = data.avatar_url;
+            const bioLink = data.html_url;
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const link = `${username}.github.io`;
-        generatedLink.innerText = link;
-    });
+            // Update profile section
+            document.getElementById('username').innerText = username;
+            document.getElementById('profile-pic').src = profilePic;
+
+            // Add GitHub link
+            const githubLink = document.createElement('a');
+            githubLink.href = bioLink;
+            githubLink.textContent = '@' + username;
+            document.getElementById('links').appendChild(githubLink);
+        });
+
+    // Add @rights4a
+    const rightsText = document.createElement('p');
+    rightsText.textContent = '@rights4a';
+    document.getElementById('app').appendChild(rightsText);
 });
