@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>a.exe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Umba+Soft:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marlon:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
             background-image: url('https://burst.shopifycdn.com/photos/city-landscape-at-night.jpg?width=1000&format=pjpg&exif=0&iptc=0');
@@ -18,7 +18,7 @@
             overflow: hidden;
             animation: changeBackground 10s infinite alternate;
             transition: background-color 0.3s ease;
-            font-family: 'Umba Soft', sans-serif;
+            font-family: 'Marlon', sans-serif;
             position: relative; /* Added for absolute positioning of love text */
         }
 
@@ -131,74 +131,69 @@
         }
 
         .love-text {
-            position: absolute;
-            bottom: -20px; /* Adjust this value as needed */
+            position: fixed;
+            bottom: 10px; /* Adjust this value as needed */
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
             color: #6a00ff;
-            opacity: 0; /* Hidden by default */
-            pointer-events: none;
             z-index: 1;
         }
 
-        .content:hover .love-text {
-            opacity: 1; /* Show on hover */
-        }
     </style>
 </head>
 <body>
-    <div class="loading-screen">
-        <div class="loading-text">Loading...</div>
+<div class="loading-screen">
+    <div class="loading-text">Loading...</div>
+</div>
+
+<div class="content" style="display: none;">
+    <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image">
+    <div>
+        <div class="name" id="username">Loading...</div>
+        <p>Programmer</p>
+    </div>
+    <div class="social-icons">
+        <a href="https://github.com/rights4a"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GitHub" style="width: 30px;"></a>
+        <a href="https://soundcloud.com/coldestinc"><img src="https://image.flaticon.com/icons/png/512/1384/1384015.png" alt="SoundCloud" style="width: 30px;"></a>
+        <!-- Add more social icons as needed -->
     </div>
 
-    <div class="content" style="display: none;">
-        <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image">
-        <div>
-            <div class="name" id="username">Loading...</div>
-            <p>Programmer</p>
-        </div>
-        <div class="social-icons">
-            <a href="https://github.com/rights4a"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GitHub" style="width: 30px;"></a>
-            <a href="https://soundcloud.com/coldestinc"><img src="https://image.flaticon.com/icons/png/512/1384/1384015.png" alt="SoundCloud" style="width: 30px;"></a>
-            <!-- Add more social icons as needed -->
-        </div>
+    <!-- Love text -->
+    <div class="love-text">Made with love by @rights4a</div>
+</div>
 
-        <!-- Love text -->
-        <div class="love-text">Made with love by @rights4a</div>
-    </div>
+<div class="particles">
+    <!-- Generate particles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const NUM_PARTICLES = 50;
+            const particles = document.querySelector('.particles');
 
-    <div class="particles">
-        <!-- Generate particles -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const NUM_PARTICLES = 50;
-                const particles = document.querySelector('.particles');
+            for (let i = 0; i < NUM_PARTICLES; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${Math.random() * 10}px`;
+                particle.style.height = `${Math.random() * 10}px`;
+                particle.style.left = `${Math.random() * window.innerWidth}px`;
+                particle.style.top = `${Math.random() * window.innerHeight}px`;
+                particles.appendChild(particle);
+            }
 
-                for (let i = 0; i < NUM_PARTICLES; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    particle.style.width = `${Math.random() * 10}px`;
-                    particle.style.height = `${Math.random() * 10}px`;
-                    particle.style.left = `${Math.random() * window.innerWidth}px`;
-                    particle.style.top = `${Math.random() * window.innerHeight}px`;
-                    particles.appendChild(particle);
-                }
+            // Simulate loading time
+            setTimeout(function () {
+                const loadingScreen = document.querySelector('.loading-screen');
+                const content = document.querySelector('.content');
 
-                // Simulate loading time
-                setTimeout(function () {
-                    const loadingScreen = document.querySelector('.loading-screen');
-                    const content = document.querySelector('.content');
+                loadingScreen.style.display = 'none';
+                content.style.display = 'block';
 
-                    loadingScreen.style.display = 'none';
-                    content.style.display = 'block';
-
-                    // Replace loading text with GitHub username
-                    const usernameElement = document.getElementById('username');
-                    usernameElement.textContent = 'rights4a';
-                }, 2000); // Adjust the time as needed
-            });
-        </script>
-    </div>
+                // Replace loading text with GitHub username
+                const usernameElement = document.getElementById('username');
+                usernameElement.textContent = 'rights4a';
+            }, 2000); // Adjust the time as needed
+        });
+    </script>
+</div>
 </body>
 </html>
