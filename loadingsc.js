@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         particles.appendChild(particle);
     }
 
-    // darkmode sliders 
+    // dark mode sections
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-slider').checked = true;
@@ -26,7 +26,7 @@ function toggleDarkMode() {
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 }
 
-// 
+//  visibility on entering site
 function enterSite() {
     const content = document.querySelector('.content');
     const enterMessage = document.querySelector('#enter-message');
@@ -34,8 +34,10 @@ function enterSite() {
     enterMessage.style.display = 'none';
 }
 
-// click to enter
+
 document.getElementById('enter-message').addEventListener('click', enterSite);
 
-// dark mode slider
+
 document.getElementById('dark-mode-slider').addEventListener('change', toggleDarkMode);
+
+// coded by rights4a
