@@ -3,29 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biolinkie</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>a.exe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://burst.shopifycdn.com/photos/city-landscape-at-night.jpg?width=1000&format=pjpg&exif=0&iptc=0');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            animation: changeBackground 10s infinite alternate;
+            transition: background-color 0.3s ease;
+            font-family: 'Jersey 10', sans-serif;
+        }
+
+        @keyframes changeBackground {
+            0% {
+                filter: brightness(100%);
+            }
+
+            100% {
+                filter: brightness(80%);
+            }
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: background-color 0.5s ease;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            display: inline-block;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #8000ff, #ff00ff);
+            background-size: 600% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowText 2s linear infinite;
+        }
+
+        @keyframes rainbowText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        a {
+            color: #6a00ff;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleAnim 10s linear infinite, particleMove 10s linear infinite;
+        }
+
+        @keyframes particleAnim {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(100vw - 50%), calc(100vh - 50%));
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <div id="loading-screen">
-            <h1>Loading...</h1>
+    <div class="content">
+        <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image">
+        <div>
+            <div class="name">a.exe</div>
+            <p>Programmer</p>
         </div>
-        <div id="main-content" style="display: none;">
-            <div id="biolink">
-                <h1>Biolink</h1>
-                <div id="profile">
-                    <img id="profile-pic" src="" alt="Profile Picture">
-                    <h2 id="username"></h2>
-                </div>
-                <div id="links">
-                    <a href="https://www.linkedin.com/in/yourlinkedinusername">LinkedIn</a>
-                    <a href="https://twitter.com/yourtwitterusername">Twitter</a>
-                    <!-- Add more links as needed -->
-                </div>
-            </div>
+        <div class="social-icons">
+            <a href="https://github.com/rights4a"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GitHub" style="width: 30px;"></a>
+            <a href="https://soundcloud.com/coldestinc"><img src="https://image.flaticon.com/icons/png/512/1384/1384015.png" alt="SoundCloud" style="width: 30px;"></a>
+            <!-- Add more social icons as needed -->
         </div>
     </div>
-    <script src="loadingsc.js"></script>
+
+    <div class="particles">
+        <!-- Generate particles -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const NUM_PARTICLES = 50;
+                const particles = document.querySelector('.particles');
+
+                for (let i = 0; i < NUM_PARTICLES; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.width = `${Math.random() * 10}px`;
+                    particle.style.height = `${Math.random() * 10}px`;
+                    particle.style.left = `${Math.random() * window.innerWidth}px`;
+                    particle.style.top = `${Math.random() * window.innerHeight}px`;
+                    particles.appendChild(particle);
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>
