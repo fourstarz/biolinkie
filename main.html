@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>a.exe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Umba+Soft:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
             background-image: url('https://burst.shopifycdn.com/photos/city-landscape-at-night.jpg?width=1000&format=pjpg&exif=0&iptc=0');
@@ -18,7 +18,7 @@
             overflow: hidden;
             animation: changeBackground 10s infinite alternate;
             transition: background-color 0.3s ease;
-            font-family: 'Jersey 10', sans-serif;
+            font-family: 'Umba Soft', sans-serif;
             position: relative; /* Added for absolute positioning of love text */
         }
 
@@ -50,13 +50,15 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             transition: background-color 0.5s ease;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             position: relative; /* Added for absolute positioning of love text */
+            max-width: 400px;
+            margin: auto;
         }
 
         img {
@@ -70,26 +72,12 @@
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #8000ff, #ff00ff);
-            background-size: 600% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbowText 2s linear infinite;
-        }
-
-        @keyframes rainbowText {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        a {
             color: #6a00ff;
-            text-decoration: none;
+        }
+
+        p {
+            margin: 0;
+            color: #333;
         }
 
         .social-icons {
@@ -148,7 +136,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 14px;
-            color: white;
+            color: #6a00ff;
             opacity: 0; /* Hidden by default */
             pointer-events: none;
             z-index: 1;
@@ -211,3 +199,6 @@
                 }, 2000); // Adjust the time as needed
             });
         </script>
+    </div>
+</body>
+</html>
