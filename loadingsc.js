@@ -1,4 +1,4 @@
-// particles
+//  particles
 document.addEventListener('DOMContentLoaded', function () {
     const NUM_PARTICLES = 50;
     const particles = document.querySelector('.particles');
@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
         particle.style.top = `${Math.random() * window.innerHeight}px`;
         particles.appendChild(particle);
 
-        
+        // Remove particle after animation 
         setTimeout(() => {
             particles.removeChild(particle);
-        }, 10000); // amiation duraction
+        }, 10000); // Match the animation
     }
 
     function generateParticles() {
@@ -24,28 +24,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Generate mora because why not
+    // Generate more particles
     generateParticles();
 
-    // xoxox
+    // gang its every second 
     setInterval(generateParticles, 1000);
 
-    }
-
-    // dark mode sections
+    // rest its dark mode
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-slider').checked = true;
     }
 });
 
-// Toggle dark mode
+//  dark mode
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 }
 
-//  visibility on entering site
+// Toggle content visibility on entering site
 function enterSite() {
     const content = document.querySelector('.content');
     const enterMessage = document.querySelector('#enter-message');
@@ -53,10 +51,8 @@ function enterSite() {
     enterMessage.style.display = 'none';
 }
 
-
+// Event listener for click to enter
 document.getElementById('enter-message').addEventListener('click', enterSite);
 
-
+// Event listener for dark mode toggle
 document.getElementById('dark-mode-slider').addEventListener('change', toggleDarkMode);
-
-// coded by rights4a
