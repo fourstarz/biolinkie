@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biolinkie</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <h1>Loading...</h1>
+    </div>
+    <div id="main-content" style="display: none;">
+        <h1>Welcome to Biolinkie</h1>
+        <button id="sign-up-button">Sign Up</button>
+        <button id="sign-in-button">Sign In</button>
+        
+        <div id="sign-up-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <p id="generated-link">(yourgithubname).github.io/</p>
+                <button type="submit">Generate Biolink</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
