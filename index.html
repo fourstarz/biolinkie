@@ -190,8 +190,24 @@
                 for (let i = 0; i < NUM_PARTICLES; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
-                   
+                    particle.style.width = `${Math.random() * 10}px`;
+                    particle.style.height = `${Math.random() * 10}px`;
+                    particle.style.left = `${Math.random() * window.innerWidth}px`;
+                    particle.style.top = `${Math.random() * window.innerHeight}px`;
+                    particles.appendChild(particle);
+                }
 
-    </div>
-</body>
-</html>
+                // Simulate loading time
+                setTimeout(function () {
+                    const loadingScreen = document.querySelector('.loading-screen');
+                    const content = document.querySelector('.content');
+
+                    loadingScreen.style.display = 'none';
+                    content.style.display = 'block';
+
+                    // Replace loading text with GitHub username
+                    const usernameElement = document.getElementById('username');
+                    usernameElement.textContent = 'rights4a';
+                }, 2000); // Adjust the time as needed
+            });
+        </script
