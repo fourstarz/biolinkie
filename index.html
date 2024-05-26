@@ -73,6 +73,7 @@
             font-weight: bold;
             margin-bottom: 10px;
             color: #6a00ff;
+            animation: rainbowText 2s linear infinite;
         }
 
         p {
@@ -138,6 +139,18 @@
             font-size: 14px;
             color: #6a00ff;
             z-index: 1;
+            font-weight: bold;
+            visibility: visible;
+        }
+
+        @keyframes rainbowText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
     </style>
@@ -154,9 +167,9 @@
         <p>Programmer</p>
     </div>
     <div class="social-icons">
-        <a href="https://github.com/rights4a"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GitHub" style="width: 30px;"></a>
-        <a href="https://soundcloud.com/coldestinc"><img src="https://image.flaticon.com/icons/png/512/1384/1384015.png" alt="SoundCloud" style="width: 30px;"></a>
-        <!-- Add more social icons as needed -->
+        <a href="https://github.com/rights4a">GitHub</a>
+        <a href="https://soundcloud.com/coldestinc">SoundCloud</a>
+        <!-- Add more social links as needed -->
     </div>
 
     <!-- Love text -->
