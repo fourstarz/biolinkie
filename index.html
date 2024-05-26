@@ -3,167 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>a.exe</title>
+    <title>BioLinkie</title>
     <link href="https://fonts.googleapis.com/css2?family=Marlon:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('https://burst.shopifycdn.com/photos/city-landscape-at-night.jpg?width=1000&format=pjpg&exif=0&iptc=0');
-            background-size: cover;
-            background-position: center;
+            background-color: white; /* Default background color */
+            color: black; /* Default text color */
+            font-family: 'Marlon', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .made-with-love {
+            font-weight: bold;
+        }
+
+        .enter-message {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            animation: changeBackground 10s infinite alternate;
-            transition: background-color 0.3s ease;
-            font-family: 'Marlon', sans-serif;
-            position: relative; /* Added for absolute positioning of love text */
-        }
-
-        @keyframes changeBackground {
-            0% {
-                filter: brightness(100%);
-            }
-
-            100% {
-                filter: brightness(80%);
-            }
-        }
-
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        .loading-text {
+            background-color: black;
+            color: white;
+            cursor: pointer;
             font-size: 24px;
         }
-
-        .content {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: background-color 0.5s ease;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            position: relative; /* Added for absolute positioning of love text */
-            max-width: 400px;
-            margin: auto;
-        }
-
-        img {
-            width: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        .name {
-            display: inline-block;
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #6a00ff;
-            animation: rainbowText 2s linear infinite;
-        }
-
-        p {
-            margin: 0;
-            color: #333;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            margin: 0 10px;
-        }
-
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleAnim 10s linear infinite, particleMove 10s linear infinite;
-        }
-
-        @keyframes particleAnim {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
-
-        @keyframes particleMove {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(calc(100vw - 50%), calc(100vh - 50%));
-            }
-        }
-
-        .love-text {
-            position: fixed;
-            bottom: 10px; /* Adjust this value as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: #6a00ff;
-            z-index: 1;
-            font-weight: bold;
-            visibility: visible;
-        }
-
-        @keyframes rainbowText {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
     </style>
 </head>
 <body>
-<div class="loading-screen">
-    <div class="loading-text">Loading...</div>
-</div>
-
-<div class="content" style="display: none;">
-    <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image">
+<div class="content">
+    <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image" id="profile-image">
     <div>
-        <div class="name" id="username">Loading...</div>
+        <div class="name" id="username">rights4a</div>
         <p>Programmer</p>
     </div>
     <div class="social-icons">
@@ -171,42 +56,44 @@
         <a href="https://soundcloud.com/coldestinc">SoundCloud</a>
         <!-- Add more social links as needed -->
     </div>
-
-    <!-- Love text -->
-    <div class="love-text">Made with love by @rights4a</div>
+    <div class="made-with-love">Made with love by @rights4a</div>
 </div>
 
-<div class="particles">
-    <!-- Generate particles -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const NUM_PARTICLES = 50;
-            const particles = document.querySelector('.particles');
+<div class="enter-message" id="enter-message">Click to Enter</div>
 
-            for (let i = 0; i < NUM_PARTICLES; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.width = `${Math.random() * 10}px`;
-                particle.style.height = `${Math.random() * 10}px`;
-                particle.style.left = `${Math.random() * window.innerWidth}px`;
-                particle.style.top = `${Math.random() * window.innerHeight}px`;
-                particles.appendChild(particle);
+<script>
+    // Toggle dark mode
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+
+    // Toggle content visibility and dark mode
+    function enterSite() {
+        const content = document.querySelector('.content');
+        const enterMessage = document.querySelector('#enter-message');
+        if (content.style.display === 'none') {
+            content.style.display = 'flex';
+            enterMessage.style.display = 'none';
+            if (localStorage.getItem('darkMode') === 'true') {
+                toggleDarkMode();
             }
+        }
+    }
 
-            // Simulate loading time
-            setTimeout(function () {
-                const loadingScreen = document.querySelector('.loading-screen');
-                const content = document.querySelector('.content');
+    // Event listener for click to enter
+    document.getElementById('enter-message').addEventListener('click', enterSite);
 
-                loadingScreen.style.display = 'none';
-                content.style.display = 'block';
+    // Toggle dark mode on slider change
+    document.getElementById('dark-mode-slider').addEventListener('change', function () {
+        toggleDarkMode();
+        localStorage.setItem('darkMode', this.checked);
+    });
 
-                // Replace loading text with GitHub username
-                const usernameElement = document.getElementById('username');
-                usernameElement.textContent = 'rights4a';
-            }, 2000); // Adjust the time as needed
-        });
-    </script>
-</div>
+    // Check if dark mode preference is stored
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.getElementById('dark-mode-slider').checked = true;
+        toggleDarkMode();
+    }
+</script>
 </body>
 </html>
