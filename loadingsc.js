@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const NUM_PARTICLES = 50;
     const particles = document.querySelector('.particles');
 
-    for (let i = 0; i < NUM_PARTICLES; i++) {
+    function createParticle() {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.style.width = `${Math.random() * 10}px`;
@@ -11,7 +11,25 @@ document.addEventListener('DOMContentLoaded', function () {
         particle.style.left = `${Math.random() * window.innerWidth}px`;
         particle.style.top = `${Math.random() * window.innerHeight}px`;
         particles.appendChild(particle);
+
+        
+        setTimeout(() => {
+            particles.removeChild(particle);
+        }, 10000); // amiation duraction
     }
+
+    function generateParticles() {
+        for (let i = 0; i < NUM_PARTICLES; i++) {
+            createParticle();
+        }
+    }
+
+    // Generate mora because why not
+    generateParticles();
+
+    // xoxox
+    setInterval(generateParticles, 1000);
+
     }
 
     // dark mode sections
