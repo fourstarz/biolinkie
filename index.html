@@ -12,6 +12,7 @@
             font-family: 'Marlon', sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Prevent scrollbars */
         }
 
         .content {
@@ -21,6 +22,7 @@
             height: 100vh;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
 
         .dark-mode {
@@ -30,6 +32,11 @@
 
         .made-with-love {
             font-weight: bold;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
         }
 
         .enter-message {
@@ -41,10 +48,67 @@
             color: white;
             cursor: pointer;
             font-size: 24px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleAnim 10s linear infinite, particleMove 10s linear infinite;
+        }
+
+        @keyframes particleAnim {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(calc(100vw - 50%), calc(100vh - 50%));
+            }
+        }
+
+        .dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
+<div class="dark-mode-toggle">
+    <label for="dark-mode-slider">Dark Mode</label>
+    <input type="checkbox" id="dark-mode-slider">
+</div>
+
 <div class="content">
     <img src="https://avatarfiles.alphacoders.com/231/231980.jpg" alt="Profile Image" id="profile-image">
     <div>
@@ -61,39 +125,52 @@
 
 <div class="enter-message" id="enter-message">Click to Enter</div>
 
+<div class="particles">
+    <!-- Generate particles -->
+</div>
+
 <script>
+    // Generate particles
+    document.addEventListener('DOMContentLoaded', function () {
+        const NUM_PARTICLES = 50;
+        const particles = document.querySelector('.particles');
+
+        for (let i = 0; i < NUM_PARTICLES; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.width = `${Math.random() * 10}px`;
+            particle.style.height = `${Math.random() * 10}px`;
+            particle.style.left = `${Math.random() * window.innerWidth}px`;
+            particle.style.top = `${Math.random() * window.innerHeight}px`;
+            particles.appendChild(particle);
+        }
+
+        // Check if dark mode preference is stored
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('dark-mode-slider').checked = true;
+        }
+    });
+
     // Toggle dark mode
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
 
-    // Toggle content visibility and dark mode
+    // Toggle content visibility on entering site
     function enterSite() {
         const content = document.querySelector('.content');
         const enterMessage = document.querySelector('#enter-message');
-        if (content.style.display === 'none') {
-            content.style.display = 'flex';
-            enterMessage.style.display = 'none';
-            if (localStorage.getItem('darkMode') === 'true') {
-                toggleDarkMode();
-            }
-        }
+        content.style.display = 'flex';
+        enterMessage.style.display = 'none';
     }
 
     // Event listener for click to enter
     document.getElementById('enter-message').addEventListener('click', enterSite);
 
-    // Toggle dark mode on slider change
-    document.getElementById('dark-mode-slider').addEventListener('change', function () {
-        toggleDarkMode();
-        localStorage.setItem('darkMode', this.checked);
-    });
-
-    // Check if dark mode preference is stored
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.getElementById('dark-mode-slider').checked = true;
-        toggleDarkMode();
-    }
+    // Event listener for dark mode toggle
+    document.getElementById('dark-mode-slider').addEventListener('change', toggleDarkMode);
 </script>
 </body>
 </html>
