@@ -12,17 +12,15 @@
             <h1>Loading...</h1>
         </div>
         <div id="main-content" style="display: none;">
-            <h1>Welcome to Biolinkie</h1>
-            <button id="sign-up-button">Sign Up</button>
-            <button id="sign-in-button">Sign In</button>
-            <div id="sign-up-form" style="display: none;">
-                <h2>Sign Up</h2>
-                <form id="form">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                    <p id="generated-link">(yourgithubname).github.io/</p>
-                    <button type="submit">Generate Biolink</button>
-                </form>
+            <div id="biolink">
+                <h1>Biolink</h1>
+                <div id="profile">
+                    <img id="profile-pic" src="" alt="Profile Picture">
+                    <h2 id="username"></h2>
+                </div>
+                <div id="links">
+                    <!-- Links will be dynamically added here -->
+                </div>
             </div>
         </div>
     </div>
