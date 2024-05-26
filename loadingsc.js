@@ -1,4 +1,4 @@
-// Generate particles
+// particles
 document.addEventListener('DOMContentLoaded', function () {
     const NUM_PARTICLES = 50;
     const particles = document.querySelector('.particles');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         particles.appendChild(particle);
     }
 
-    // Check if dark mode preference is stored
+    // darkmode sliders 
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-slider').checked = true;
@@ -26,7 +26,7 @@ function toggleDarkMode() {
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 }
 
-// Toggle content visibility on entering site
+// 
 function enterSite() {
     const content = document.querySelector('.content');
     const enterMessage = document.querySelector('#enter-message');
@@ -34,8 +34,8 @@ function enterSite() {
     enterMessage.style.display = 'none';
 }
 
-// Event listener for click to enter
+// click to enter
 document.getElementById('enter-message').addEventListener('click', enterSite);
 
-// Event listener for dark mode toggle
+// dark mode slider
 document.getElementById('dark-mode-slider').addEventListener('change', toggleDarkMode);
