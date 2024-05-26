@@ -27,6 +27,22 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('links').appendChild(githubLink);
         });
 
+    // Add additional links
+    const linksData = [
+        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/404' },
+        { name: 'Twitter', url: 'https://twitter.com/404 },
+        { name: 'github', url: 'https://www.github.com/rights4a
+        // Add more links as needed
+    ];
+
+    const linksContainer = document.getElementById('links');
+    linksData.forEach(link => {
+        const linkElement = document.createElement('a');
+        linkElement.href = link.url;
+        linkElement.textContent = link.name;
+        linksContainer.appendChild(linkElement);
+    });
+
     // Add @rights4a
     const rightsText = document.createElement('p');
     rightsText.textContent = '@rights4a';
