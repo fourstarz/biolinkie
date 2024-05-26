@@ -1,29 +1,41 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const loadingScreen = document.getElementById('loading-screen');
-    const mainContent = document.getElementById('main-content');
+// Generate particles
+document.addEventListener('DOMContentLoaded', function () {
+    const NUM_PARTICLES = 50;
+    const particles = document.querySelector('.particles');
 
-    // Simulate loading time
-    setTimeout(function() {
-        loadingScreen.style.display = 'none';
-        mainContent.style.display = 'block';
-    }, 2000); // Adjust the time as needed
+    for (let i = 0; i < NUM_PARTICLES; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = `${Math.random() * 10}px`;
+        particle.style.height = `${Math.random() * 10}px`;
+        particle.style.left = `${Math.random() * window.innerWidth}px`;
+        particle.style.top = `${Math.random() * window.innerHeight}px`;
+        particles.appendChild(particle);
+    }
 
-    // Retrieve user's GitHub profile data
-    fetch('https://api.github.com/users/yourgithubname')
-        .then(response => response.json())
-        .then(data => {
-            const username = data.login;
-            const profilePic = data.avatar_url;
-            const bioLink = data.html_url;
-
-            // Update profile section
-            document.getElementById('username').innerText = username;
-            document.getElementById('profile-pic').src = profilePic;
-        })
-        .catch(error => {
-            console.error('Error fetching GitHub data:', error);
-        });
-
-    // Generate links
-    generateLinks();
+    // Check if dark mode preference is stored
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-slider').checked = true;
+    }
 });
+
+// Toggle dark mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+// Toggle content visibility on entering site
+function enterSite() {
+    const content = document.querySelector('.content');
+    const enterMessage = document.querySelector('#enter-message');
+    content.style.display = 'flex';
+    enterMessage.style.display = 'none';
+}
+
+// Event listener for click to enter
+document.getElementById('enter-message').addEventListener('click', enterSite);
+
+// Event listener for dark mode toggle
+document.getElementById('dark-mode-slider').addEventListener('change', toggleDarkMode);
