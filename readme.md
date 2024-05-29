@@ -3,6 +3,10 @@
 # biolinkie 
 a biolink service for your github repos.
 
+# what is a biolink?
+
+a biolink is sites/apps that hosts links to websites that u choose. for example linktree.
+
 # how do i use it?
 - Download the **LATEST** release as this is the most stable.
 - when downloaded go to your repo and import it inside.
