@@ -1,4 +1,3 @@
-//  particles
 document.addEventListener('DOMContentLoaded', function () {
     const NUM_PARTICLES = 50;
     const particles = document.querySelector('.particles');
@@ -10,12 +9,22 @@ document.addEventListener('DOMContentLoaded', function () {
         particle.style.height = `${Math.random() * 10}px`;
         particle.style.left = `${Math.random() * window.innerWidth}px`;
         particle.style.top = `${Math.random() * window.innerHeight}px`;
+
+        // Add animation for controlled movement
+        const duration = 5000 + Math.random() * 5000;
+        particle.style.transition = `transform ${duration}ms linear`;
+        const xMovement = (Math.random() - 0.5) * 100;
+        const yMovement = (Math.random() - 0.5) * 100;
+        setTimeout(() => {
+            particle.style.transform = `translate(${xMovement}px, ${yMovement}px)`;
+        }, 0);
+
         particles.appendChild(particle);
 
         // Remove particle after animation 
         setTimeout(() => {
             particles.removeChild(particle);
-        }, 10000); // Match the animation
+        }, duration); // Match the animation duration
     }
 
     function generateParticles() {
@@ -24,20 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Generate more particles
+    // Generate initial particles
     generateParticles();
 
-    // gang its every second 
+    // Generate more particles every second 
     setInterval(generateParticles, 1000);
 
-    // rest its dark mode
+    // Set dark mode as the default
+    document.body.classList.add('dark-mode');
+    document.getElementById('dark-mode-slider').checked = true;
+
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-slider').checked = true;
     }
 });
 
-//  dark mode
+// Dark mode toggle function
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
